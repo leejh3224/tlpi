@@ -1,0 +1,11 @@
+# object files
+*.o
+
+# executables
+exe/
+
+# static library
+common
+
+# editor settings
+.vscode
