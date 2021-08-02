@@ -1,4 +1,4 @@
-FROM gcc:4.9
+FROM gcc:11
 
 ARG TARGET
 ARG LIBRARY_NAME=common
@@ -24,6 +24,6 @@ RUN gcc -Ilib -c ./lib/error_functions.c && \
 # # build static library
 RUN ar -cr ${LIBRARY_NAME} error_functions.o get_num.o file_perms.o curr_time.o print_wait_status.o st_handler.o
 
-RUN gcc -g -rdynamic ${TARGET} ${LIBRARY_NAME} -Ilib -o exe/out
+RUN gcc -g -rdynamic -fsanitize=address -fno-omit-frame-pointer -static-libasan -ggdb ${TARGET} ${LIBRARY_NAME} -Ilib -o exe/out
 
 CMD ["/bin/sh", "./run_program.sh"]
