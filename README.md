@@ -9,4 +9,7 @@ code from *The Linux Programming Interface*
 
 # can pass up to 4 args
 ./run.sh <arg1> <arg2> ...
+
+# if you need to interact with linux container
+docker run -it --entrypoint /bin/bash tlpi
 ```
