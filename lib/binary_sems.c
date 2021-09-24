@@ -6,7 +6,7 @@
 Boolean bsUseSemUndo = FALSE;
 Boolean bsRetryOnEintr = TRUE;
 
-int initSemAvaiable(int semId, int semNum) {
+int initSemAvailable(int semId, int semNum) {
     union semun arg;
     arg.val = 1;
     return semctl(semId, semNum, SETVAL, arg);
@@ -15,7 +15,7 @@ int initSemAvaiable(int semId, int semNum) {
 int initSemInUse(int semId, int semNum) {
     union semun arg;
     arg.val = 0;
-    return semctl(semID, semNum, SETVAL, arg);
+    return semctl(semId, semNum, SETVAL, arg);
 }
 
 int reserveSem(int semId, int semNum) {
